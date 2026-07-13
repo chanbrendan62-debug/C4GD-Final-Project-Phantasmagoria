@@ -299,7 +299,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1660400004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -446,10 +446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00708e2d93c2bc44f888442280e94dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpPower: 0
+  speed: 20
+  jumpPower: 5
   coyoteTime: 0
-  jumpKey: 0
+  jumpKey: 32
   radiusCheck: 0.1
   groundLayer:
     serializedVersion: 2
@@ -459,8 +459,10 @@ MonoBehaviour:
   dashDuration: 0.25
   dashCooldown: 1
   isDashing: 0
+  isInvincible: 0
   dashEndTime: 0
   nextDashTime: 0
+  originalGravity: 1
 --- !u!1 &1887358998
 GameObject:
   m_ObjectHideFlags: 0

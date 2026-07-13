@@ -28,6 +28,8 @@ public class CharMovement : MonoBehaviour
     public float dashCooldown = 1f;
     
     public bool isDashing = false;
+
+    public bool isInvincible = false;
     public float dashEndTime;
     public float nextDashTime;
 
@@ -47,19 +49,10 @@ public class CharMovement : MonoBehaviour
     {   
         if (isDashing)
         {
-            if (Time.time >= dashEndTime)
-            {
-                rb.gravityScale = originalGravity;
-                rb.velocity = new Vector2(0f, rb.velocity.y);
-                isDashing = false;
-            }
-            else
-            {
-                return;
-            }
+           return;
         }
         //moveshi
-        float hor = Input.GetAxisRaw("Horizontal");
+        float hor = Input.GetAxis("Horizontal");
         xVel = hor * speed;
 
         //jumpshi
@@ -71,8 +64,7 @@ public class CharMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime)
         {
-            Dash();
-            return;
+            StartCoroutine(Dash());
         }
 
         if(hor < 0)
@@ -83,6 +75,8 @@ public class CharMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
+
+        
     }
     private void FixedUpdate()
     {
@@ -109,17 +103,30 @@ public class CharMovement : MonoBehaviour
         return Physics2D.OverlapCircle(checker.position, radiusCheck, groundLayer);
     }
 
-    void Dash()
+    IEnumerator Dash() 
     {
+
+        isInvincible = true;
+
         isDashing = true;
-        
-        dashEndTime = Time.time + dashDuration;
+        isInvincible = true; 
+
         nextDashTime = Time.time + dashDuration + dashCooldown;
-        
         rb.gravityScale = 0f;
 
         float dashDirection = transform.localScale.x;
         rb.velocity = new Vector2(dashDirection * dashSpeed, 0f);
-    }
+
+        yield return new WaitForSeconds(0.5f);
+
+        rb.gravityScale = originalGravity;
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+        
+        isDashing = false;
+        isInvincible = false;
+
+    } 
+
+
 
 }
