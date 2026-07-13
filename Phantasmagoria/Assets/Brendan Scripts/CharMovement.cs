@@ -22,6 +22,9 @@ public class CharMovement : MonoBehaviour
     bool jumped;
     float timeGrounded;
 
+    public float totalJumps = 2f;
+    public float currentJumps;
+
     [Header("Dash")]
     public float dashSpeed = 35f;
     public float dashDuration = 0.25f;
@@ -42,6 +45,7 @@ public class CharMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalGravity = rb.gravityScale;
+        currentJumps = totalJumps;
     }
 
     // Update is called once per frame
@@ -60,7 +64,8 @@ public class CharMovement : MonoBehaviour
         if (Input.GetKeyDown(jumpKey))
         {
             jumped = true;
-        }
+            Debug.Log("jumping");
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime)
         {
@@ -75,8 +80,6 @@ public class CharMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-
-        
     }
     private void FixedUpdate()
     {
@@ -92,12 +95,22 @@ public class CharMovement : MonoBehaviour
             yVel = jumpPower;
             timeGrounded = 20;
         }
+
+        if(!(isGrounded()) && currentJumps > 0 && Input.GetKeyDown(jumpKey))
+        {
+            jumped = true;
+            yVel = jumpPower;
+            currentJumps--;
+            Debug.Log("double jumping");
+        }
         jumped = false;
         rb.velocity = new Vector2(xVel, yVel);
-    }
+        if(isGrounded()){
+            currentJumps = totalJumps;
+        }
 
 
-
+    }
     bool isGrounded()
     {
         return Physics2D.OverlapCircle(checker.position, radiusCheck, groundLayer);
@@ -126,7 +139,4 @@ public class CharMovement : MonoBehaviour
         isInvincible = false;
 
     } 
-
-
-
 }
