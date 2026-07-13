@@ -22,8 +22,8 @@ public class CharMovement : MonoBehaviour
     bool jumped;
     float timeGrounded;
 
-    public float totalJumps = 2f;
-    public float currentJumps;
+    public int totalJumps = 1;
+    public int currentJumps;
 
     [Header("Dash")]
     public float dashSpeed = 35f;
@@ -64,7 +64,6 @@ public class CharMovement : MonoBehaviour
         if (Input.GetKeyDown(jumpKey))
         {
             jumped = true;
-            Debug.Log("jumping");
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime)
@@ -88,28 +87,37 @@ public class CharMovement : MonoBehaviour
         {
             return;
         }
+
         yVel = rb.velocity.y;
-         if (!isGrounded()) { timeGrounded += Time.deltaTime; } else { timeGrounded = 0; }
-        if((isGrounded() || timeGrounded < coyoteTime) && jumped)
-        {
-            yVel = jumpPower;
-            timeGrounded = 20;
-        }
 
-        if(!(isGrounded()) && currentJumps > 0 && Input.GetKeyDown(jumpKey))
-        {
-            jumped = true;
-            yVel = jumpPower;
-            currentJumps--;
-            Debug.Log("double jumping");
-        }
-        jumped = false;
-        rb.velocity = new Vector2(xVel, yVel);
-        if(isGrounded()){
+        if (!isGrounded()) 
+        { 
+            timeGrounded += Time.fixedDeltaTime; 
+        } 
+        else 
+        { 
+            timeGrounded = 0;
             currentJumps = totalJumps;
-        }
+        }
 
+        if (jumped)
+        {
+            if(isGrounded() || timeGrounded < coyoteTime)
+            {
+                yVel = jumpPower;
+                timeGrounded = coyoteTime + 1f;
+                currentJumps--;
+            }
+            else if (currentJumps > 0)
+            {
+                yVel = jumpPower;
+                currentJumps--;
+                Debug.Log("double jumping");
+            }
+            jumped = false;
+        }
 
+        rb.velocity = new Vector2(xVel, yVel);
     }
     bool isGrounded()
     {
@@ -118,9 +126,6 @@ public class CharMovement : MonoBehaviour
 
     IEnumerator Dash() 
     {
-
-        isInvincible = true;
-
         isDashing = true;
         isInvincible = true; 
 
@@ -130,7 +135,7 @@ public class CharMovement : MonoBehaviour
         float dashDirection = transform.localScale.x;
         rb.velocity = new Vector2(dashDirection * dashSpeed, 0f);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(dashDuration);
 
         rb.gravityScale = originalGravity;
         rb.velocity = new Vector2(0f, rb.velocity.y);
@@ -138,5 +143,5 @@ public class CharMovement : MonoBehaviour
         isDashing = false;
         isInvincible = false;
 
-    } 
+    }
 }
