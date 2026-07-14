@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public static Player instance;
+
+    public float damage;
 
     [Header("Movement")]
     public float speed;
@@ -36,6 +39,9 @@ public class CharMovement : MonoBehaviour
     public float dashEndTime;
     public float nextDashTime;
 
+    public int totalDashCount;
+    public int currentDashCount;
+
     public float originalGravity;
     Rigidbody2D rb;
 
@@ -51,26 +57,24 @@ public class CharMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (isDashing)
+        if (isDashing) //if dashing cancel update so nothing changes
         {
            return;
         }
-        //moveshi
+        //Movement
         float hor = Input.GetAxis("Horizontal");
         xVel = hor * speed;
-
-        //jumpshi
-
+        //Jumping
         if (Input.GetKeyDown(jumpKey))
         {
             jumped = true;
         }
-
+        //dashing
         if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time >= nextDashTime)
         {
             StartCoroutine(Dash());
         }
-
+        //changes sprite direction based on movement
         if(hor < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -82,14 +86,14 @@ public class CharMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //updatemovementshit
+        //cancel fixedupdate if dashing
         if (isDashing)
         {
             return;
         }
 
         yVel = rb.velocity.y;
-
+        //check if not grounded
         if (!isGrounded()) 
         { 
             timeGrounded += Time.fixedDeltaTime; 
@@ -100,7 +104,7 @@ public class CharMovement : MonoBehaviour
             currentJumps = totalJumps;
         }
 
-        if (jumped)
+        if (jumped) //double jumping and normal jumping
         {
             if(isGrounded() || timeGrounded < coyoteTime)
             {
@@ -112,18 +116,18 @@ public class CharMovement : MonoBehaviour
             {
                 yVel = jumpPower;
                 currentJumps--;
-                Debug.Log("double jumping");
             }
             jumped = false;
         }
 
         rb.velocity = new Vector2(xVel, yVel);
     }
+    //check if grounded
     bool isGrounded()
     {
         return Physics2D.OverlapCircle(checker.position, radiusCheck, groundLayer);
     }
-
+    //dash
     IEnumerator Dash() 
     {
         isDashing = true;
@@ -143,5 +147,14 @@ public class CharMovement : MonoBehaviour
         isDashing = false;
         isInvincible = false;
 
+    }
+    public void addJumps()
+    {
+        totalJumps += 1;
+    }
+
+    public void increaseDamage(float amt)
+    {
+        damage += amt;
     }
 }

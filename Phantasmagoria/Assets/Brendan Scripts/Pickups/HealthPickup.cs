@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+public class HealthPickup : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject player;
     void Start()
     {
         
@@ -16,9 +15,12 @@ public class FollowPlayer : MonoBehaviour
     {
         
     }
-
-    void LateUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.GetComponent<Health>().GainHealth(5);
+            Destroy(gameObject);
+        }
     }
 }
