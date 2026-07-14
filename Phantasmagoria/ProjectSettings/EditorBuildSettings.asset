@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/BrendanMainMenu.unity
+    guid: d4db2e31bccae8f4b90c92a0955b7955
+  - enabled: 1
+    path: Assets/Scenes/BrendanScene.unity
+    guid: 7ee69428c3bae634da4af29c36d9ad52
   m_configObjects: {}
