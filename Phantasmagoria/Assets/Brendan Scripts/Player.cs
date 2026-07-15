@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         float hor = Input.GetAxis("Horizontal");
         xVel = hor * speed;
         //Jumping
-        if (Input.GetKeyDown(jumpKey))
+        if (Input.GetKeyDown(jumpKey) && currentJumps > 0)
         {
             jumped = true;
         }
@@ -114,7 +114,7 @@ public class Player : MonoBehaviour
 
         if (jumped) //double jumping and normal jumping
         {
-            if(isGrounded() || timeGrounded < coyoteTime)
+            if(isGrounded()) //|| timeGrounded < coyoteTime)
             {
                 yVel = jumpPower;
                 timeGrounded = coyoteTime + 1f;

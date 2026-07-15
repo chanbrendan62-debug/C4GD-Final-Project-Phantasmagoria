@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialSign : MonoBehaviour
 {
+    public GameObject text;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,15 @@ public class TutorialSign : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            
+            text.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            text.SetActive(false);
         }
     }
 }
