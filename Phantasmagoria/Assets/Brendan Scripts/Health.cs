@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private DeathMenu deathMenu;
     public float MaxHP = 100;
     public float currentHP = 100;
     public float MaxFear = 100;
@@ -25,9 +26,19 @@ public class Health : MonoBehaviour
     {   
         currentHP -= amt;
 
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
-            Destroy(gameObject);
+            Debug.Log("Health is 0 or less. Attempting to trigger death...");
+
+            if (deathMenu != null)
+            {
+                Debug.Log("DeathMenu reference is valid! Calling TriggerDeath()...");
+                deathMenu.TriggerDeath();
+            }
+            else
+            {
+                Debug.LogError("ERROR: DeathMenu reference is NULL on the Health script!");
+            }
         }
     }
 
