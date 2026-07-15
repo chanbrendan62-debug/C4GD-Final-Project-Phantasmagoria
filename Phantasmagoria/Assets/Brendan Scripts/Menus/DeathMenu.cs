@@ -23,8 +23,7 @@ public class DeathMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoMainMenu()

@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    [SerializeField] private DeathMenu deathMenu;
+
     public float damage;
 
     [Header("Movement")]
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
     public int currentDashCount;
 
     public float originalGravity;
+
+    float gameOverHeight = -20f;
     Rigidbody2D rb;
 
 
@@ -82,6 +86,10 @@ public class Player : MonoBehaviour
         else if(hor > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        if(transform.position.y < gameOverHeight){
+            deathMenu.TriggerDeath();
         }
     }
     private void FixedUpdate()

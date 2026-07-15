@@ -28,16 +28,9 @@ public class Health : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            Debug.Log("Health is 0 or less. Attempting to trigger death...");
-
             if (deathMenu != null)
             {
-                Debug.Log("DeathMenu reference is valid! Calling TriggerDeath()...");
                 deathMenu.TriggerDeath();
-            }
-            else
-            {
-                Debug.LogError("ERROR: DeathMenu reference is NULL on the Health script!");
             }
         }
     }
