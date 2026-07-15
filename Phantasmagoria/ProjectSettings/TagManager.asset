@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FearEnemy
   - JumpPickup
+  - TutorialSign
   layers:
   - Default
   - TransparentFX

@@ -16,19 +16,16 @@ public class DeathMenu : MonoBehaviour
     public void TriggerDeath()
     {
         deathScreenUI.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void RestartLevel()
-    {
-        Time.timeScale = 1f;
-        
+    {   
+        deathScreenUI.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoMainMenu()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene("BrendanMainMenu");
     }
 }
