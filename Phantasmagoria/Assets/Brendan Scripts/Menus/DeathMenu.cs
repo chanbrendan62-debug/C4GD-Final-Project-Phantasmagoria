@@ -27,9 +27,9 @@ public class DeathMenu : MonoBehaviour
         SceneManager.LoadScene(currentSceneName);
     }
 
-    public void LoadMainMenu()
+    public void GoMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("BrendanMainMenu");
     }
 }
