@@ -21,13 +21,23 @@ public class flyer : ENEMYBASE
     public override void Idle()
     {
         if (damaging) { return; }
-        float newY = startPos.y + Mathf.Cos(Time.time * bobSpeed + offset) * bobHeight;
+        float newY = startPos.y + Mathf.Sin(Time.time * bobSpeed + offset) * bobHeight;
         rb.MovePosition(new Vector2(transform.position.x, newY));
     }
+
+    public override void Chase()
+    {
+        Vector2 playerPos = PlayerInstance.Instance.transform.position;
+        Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
+        rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
+
+    }
+
 
     void Damaged(float damge)
     {
         damaging = true;
+        anim.SetBool("damaging", true);
         StartCoroutine(Knockback());
 
     }
@@ -36,6 +46,7 @@ public class flyer : ENEMYBASE
     {
         yield return new WaitForSeconds(health.iFrames);
         startPos = transform.position;
+        anim.SetBool("damaging", false);
         damaging = false;
     }
 }
