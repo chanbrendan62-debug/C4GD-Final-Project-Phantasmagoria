@@ -20,9 +20,9 @@ public class Door1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("DoorOpener");
+            animator.SetTrigger("DoorOpener");      
         }
     }
 
