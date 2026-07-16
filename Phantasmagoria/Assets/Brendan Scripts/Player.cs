@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
 
     public float originalGravity;
 
-    float gameOverHeight = -20f;
+    float gameOverHeight = -10f;
     Rigidbody2D rb;
 
 
