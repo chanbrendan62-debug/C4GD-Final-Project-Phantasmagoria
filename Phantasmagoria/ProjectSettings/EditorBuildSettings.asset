@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BrendanScene.unity
     guid: 7ee69428c3bae634da4af29c36d9ad52
+  - enabled: 1
+    path: Assets/Scenes/DropDownCave.unity
+    guid: 665efb79be8047041aed4c1150d957f6
   m_configObjects: {}
