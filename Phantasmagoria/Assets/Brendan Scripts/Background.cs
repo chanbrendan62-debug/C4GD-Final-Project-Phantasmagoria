@@ -12,7 +12,7 @@ public class Background : MonoBehaviour
     {
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
         repeatWidth = collider.size.x;
-        repeatHeight = collider.size.x;
+        repeatHeight = collider.size.y;
     }
 
     // Update is called once per frame
@@ -23,22 +23,22 @@ public class Background : MonoBehaviour
     
     void LateUpdate()
     {
-        if(Camera.main.transform.position.x > transform.position.x + repeatWidth)
+        if(player.transform.position.x > transform.position.x + repeatWidth)
         {
             transform.position = new Vector3(player.transform.position.x + repeatWidth, transform.position.y, transform.position.z);
         }
 
-        if(Camera.main.transform.position.x < transform.position.x - repeatWidth)
+        if(player.transform.position.x < transform.position.x - repeatWidth)
         {
             transform.position = new Vector3(player.transform.position.x - repeatWidth, transform.position.y, transform.position.z);
         }
 
-        if(Camera.main.transform.position.y > transform.position.y + repeatHeight)
+        if(player.transform.position.y > transform.position.y + repeatHeight)
         {
             transform.position = new Vector3(transform.position.x, player.transform.position.y - repeatHeight, transform.position.z);
         }
 
-        if(Camera.main.transform.position.y < transform.position.y - repeatHeight)
+        if(player.transform.position.y < transform.position.y - repeatHeight)
         {
             transform.position = new Vector3(transform.position.x, player.transform.position.y - repeatHeight, transform.position.z);
         }
