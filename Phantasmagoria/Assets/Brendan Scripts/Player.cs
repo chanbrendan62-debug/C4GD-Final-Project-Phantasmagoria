@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
     public float originalGravity;
 
+    public Animator anim;
     float gameOverHeight = -10f;
     Rigidbody2D rb;
 
@@ -69,6 +70,12 @@ public class Player : MonoBehaviour
         //Movement
         float hor = Input.GetAxis("Horizontal");
         xVel = hor * speed;
+
+        if (anim != null)
+        {   
+            anim.SetFloat("speed", Mathf.Abs(hor));
+        }
+
         //Jumping
         if (Input.GetKeyDown(jumpKey) && currentJumps > 0)
         {
@@ -113,6 +120,12 @@ public class Player : MonoBehaviour
             currentJumps = totalJumps;
         }
 
+        if (anim != null)
+        {
+            anim.SetBool("grounded", isGrounded());
+            anim.SetFloat("yVel", yVel);
+        }
+        
         if (jumped) //double jumping and normal jumping
         {
             if(isGrounded()) //|| timeGrounded < coyoteTime)
