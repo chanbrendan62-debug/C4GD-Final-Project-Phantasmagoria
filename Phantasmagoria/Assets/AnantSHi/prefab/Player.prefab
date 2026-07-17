@@ -149,7 +149,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -320,7 +320,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -478,8 +478,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 3.1415927
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -531,8 +531,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 3.1415927
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -584,9 +584,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
-      minScalar: 0
+      minMaxState: 3
+      scalar: 0.2094395
+      minScalar: -0.2094395
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1013,7 +1013,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 30
+        scalar: 2
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -4868,7 +4868,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 0c2879fee089bc94c9eadce542292041, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4935,6 +4935,7 @@ GameObject:
   - component: {fileID: 5099674636689578901}
   - component: {fileID: 4784767835024216059}
   - component: {fileID: 2919394335137319960}
+  - component: {fileID: 8401459291202518792}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -5062,7 +5063,7 @@ MonoBehaviour:
   speed: 5
   jumpPower: 15
   coyoteTime: 0.4
-  maxDJump: 1
+  maxDJump: 2
   radiusCheck: 0.1
   groundLayer:
     serializedVersion: 2
@@ -5086,6 +5087,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7d5559a1e0deb449f924cbf93d6fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8401459291202518792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116713778116790372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 388be84f4bfe22a4d80db12f2769fb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 9195685585110076362}
+  hurtbox: {fileID: 2590761650145996256}
+  damage: 1
+  knockback: 10
+  delay: 1
+  anim: {fileID: 3544480043675921831}
 --- !u!1 &6120939290360960552
 GameObject:
   m_ObjectHideFlags: 0
@@ -5129,6 +5148,7 @@ GameObject:
   - component: {fileID: 8686597396669824369}
   - component: {fileID: 3083670343508380088}
   - component: {fileID: 8815987406526347801}
+  - component: {fileID: 3106795196504265965}
   m_Layer: 3
   m_Name: box
   m_TagString: Untagged
@@ -5244,6 +5264,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3106795196504265965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369753189774596358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a0d09ef21f8c843b005cccba2b99cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 0
 --- !u!1 &6900724656457142853
 GameObject:
   m_ObjectHideFlags: 0

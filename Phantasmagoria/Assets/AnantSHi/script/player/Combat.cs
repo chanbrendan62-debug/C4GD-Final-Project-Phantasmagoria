@@ -14,6 +14,9 @@ public class Combat : MonoBehaviour
     bool canHit = true;
     BetterHealth health;
 
+    public Animator anim;
+
+
     void Start()
     {
         hurtbox.SetActive(false);
@@ -41,12 +44,15 @@ public class Combat : MonoBehaviour
     void Damaged(float dmg)
     {
         StartCoroutine(stopMove(GetComponent<BetterMovement>()));
+        
     }
 
     IEnumerator stopMove(BetterMovement chara)
     {
         chara.enabled = false;
+        anim.SetBool("hit", true);
         yield return new WaitForSeconds(.8f);
+        anim.SetBool("hit", false);
         chara.enabled = true;
     }
 

@@ -18,24 +18,51 @@ public class flyer : ENEMYBASE
         health.OnDamaged += Damaged;
     }
 
+    // FIXED: Uses velocity instead of MovePosition
     public override void Idle()
     {
         if (damaging) { return; }
-        float newY = startPos.y + Mathf.Cos(Time.time * bobSpeed + offset) * bobHeight;
-        rb.MovePosition(new Vector2(transform.position.x, newY));
+
+        // Calculate the target Y position for bobbing
+        float targetY = startPos.y + Mathf.Sin(Time.time * bobSpeed + offset) * bobHeight;
+
+        // Calculate the vertical velocity needed to smoothly bob to that position
+        float verticalVelocity = (targetY - transform.position.y) * bobSpeed;
+
+        // Apply horizontal (0) and vertical velocity
+        rb.velocity = new Vector2(0, verticalVelocity);
+    }
+
+    // FIXED: Uses velocity instead of MovePosition
+    public override void Chase()
+    {
+        if (damaging) { return; }
+
+        Vector2 playerPos = PlayerInstance.Instance.transform.position;
+        Vector2 direction = (playerPos - (Vector2)transform.position).normalized;
+
+        // Apply velocity directly in the direction of the player
+        rb.velocity = direction * speed;
     }
 
     void Damaged(float damge)
     {
         damaging = true;
+        anim.SetBool("damaging", true);
         StartCoroutine(Knockback());
-
     }
 
     IEnumerator Knockback()
     {
         yield return new WaitForSeconds(health.iFrames);
+
+        // Cleanly stop the knockback momentum before resuming movement
+        rb.velocity = Vector2.zero;
+
+        // Reset startPos to the flyer's new position after being knocked back
         startPos = transform.position;
+
+        anim.SetBool("damaging", false);
         damaging = false;
     }
 }

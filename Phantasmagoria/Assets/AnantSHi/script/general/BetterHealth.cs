@@ -14,6 +14,8 @@ public class BetterHealth : MonoBehaviour
     //subscription voids
     public event System.Action OnDeath;
     public event System.Action<float> OnDamaged;
+    public event System.Action<float> OnHeal;
+   
     void Start()
     {
         maxiFrames = iFrames;
@@ -45,6 +47,7 @@ public class BetterHealth : MonoBehaviour
         if (isDead) { return; }
         currentHealth += heal;
         currentHealth = Mathf.Min(currentHealth, maxHealth);
+        OnHeal?.Invoke(heal);
     }
 
     public void Die()
