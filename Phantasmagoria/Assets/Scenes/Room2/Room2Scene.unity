@@ -1826,7 +1826,8 @@ PrefabInstance:
       propertyPath: deathMenu
       value: 
       objectReference: {fileID: 1204507020}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9057993018175725229, guid: d5b65a84847dc4d43b3b90402ab1410d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1037293844201597270, guid: d5b65a84847dc4d43b3b90402ab1410d, type: 3}

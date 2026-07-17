@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2706933281335376132}
   - component: {fileID: 4565809887432191428}
   - component: {fileID: 5099674636689578901}
-  - component: {fileID: 4784767835024216059}
   - component: {fileID: 2919394335137319960}
   - component: {fileID: 8401459291202518792}
+  - component: {fileID: 5836179352676373241}
   m_Layer: 3
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: Player1
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,33 +127,6 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   iFrames: 1
---- !u!114 &4784767835024216059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6116713778116790372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3e29dd4ff2ef6049a4bf29da1639d95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  jumpPower: 15
-  coyoteTime: 0.4
-  maxDJump: 2
-  radiusCheck: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  checker: {fileID: 840583807816962788}
-  dashSpeed: 35
-  dashDuration: 0.25
-  maxDashCooldown: 1
-  canDash: 1
-  anim: {fileID: 3544480043675921831}
-  sprite: {fileID: 5792158124977285907}
 --- !u!114 &2919394335137319960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +156,42 @@ MonoBehaviour:
   damage: 1
   knockback: 10
   delay: 1
+  anim: {fileID: 3544480043675921831}
+--- !u!114 &5836179352676373241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116713778116790372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00708e2d93c2bc44f888442280e94dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMenu: {fileID: 0}
+  damage: 5
+  speed: 10
+  jumpPower: 13
+  coyoteTime: 0.4
+  jumpKey: 32
+  radiusCheck: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  checker: {fileID: 840583807816962788}
+  totalJumps: 1
+  currentJumps: 0
+  dashSpeed: 35
+  dashDuration: 0.25
+  dashCooldown: 1
+  isDashing: 0
+  isInvincible: 0
+  dashEndTime: 0
+  nextDashTime: 0
+  totalDashCount: 0
+  currentDashCount: 0
+  originalGravity: 0
   anim: {fileID: 3544480043675921831}
 --- !u!1 &6120939290360960552
 GameObject:
