@@ -15,7 +15,7 @@ public class Combat : MonoBehaviour
     BetterHealth health;
 
     public Animator anim;
-
+    public DeathMenu death;
 
     void Start()
     {
@@ -27,6 +27,7 @@ public class Combat : MonoBehaviour
         health = GetComponent<BetterHealth>();
 
         health.OnDamaged += Damaged;
+        health.OnDeath += dead;
         
     }
 
@@ -71,5 +72,10 @@ public class Combat : MonoBehaviour
         yield return new WaitForSeconds(delay);
         hurtbox.SetActive(false);
         canHit = true;
+    }
+
+    void dead()
+    {
+        death.TriggerDeath();
     }
 }
