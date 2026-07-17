@@ -479,6 +479,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4879108258056080812, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981321990247561268, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342818207714422897, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6814149892724134294, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -558,6 +570,18 @@ PrefabInstance:
     - target: {fileID: 6814149892724134294, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7425899142949023931, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139402956790705364, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139402956790705364, guid: d10fc8ae29415c941a465148e4597a5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

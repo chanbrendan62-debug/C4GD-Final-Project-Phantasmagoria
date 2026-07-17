@@ -855,25 +855,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 296bbfa43c9e29643b1b5278a2885bce, type: 3}
---- !u!1 &1759082020 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6116713778116790372, guid: 36be77537a2656c499dfca5a53f3a097, type: 3}
-  m_PrefabInstance: {fileID: 2927797695055846527}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1759082028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759082020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b6cdf970d8aae4096202e6b194aeeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  fillHealth: {fileID: 1298779140}
 --- !u!1001 &2927797695055846527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -926,13 +907,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7152030310724992508, guid: 36be77537a2656c499dfca5a53f3a097, type: 3}
+      propertyPath: fillHealth
+      value: 
+      objectReference: {fileID: 1298779140}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6116713778116790372, guid: 36be77537a2656c499dfca5a53f3a097, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1759082028}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36be77537a2656c499dfca5a53f3a097, type: 3}
 --- !u!1001 &5215883551148140217
 PrefabInstance:
