@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class healthBar : MonoBehaviour
 {
-    BetterHealth health;
+    public BetterHealth health;
     public Image fillHealth;
 
     void Start()
