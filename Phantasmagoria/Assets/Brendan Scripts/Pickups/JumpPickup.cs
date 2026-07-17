@@ -19,7 +19,18 @@ public class JumpPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<Player>().addJumps();
+
+            BetterMovement bm = collision.GetComponent<BetterMovement>();
+            if (bm != null)
+            {
+                bm.maxDJump += 1;
+            }
+
+            Player player = collision.GetComponent<Player>();
+            if (player != null)
+            {
+                player.addJumps();
+            }
             Destroy(gameObject);
         }
     }

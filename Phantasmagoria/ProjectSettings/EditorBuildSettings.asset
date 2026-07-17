@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room3/Room3Scene.unity
     guid: 88a112e910b9e934c8527c869be58c23
+  - enabled: 1
+    path: Assets/Scenes/Room3/lastCutscene.unity
+    guid: ed7506082c4b5fe42a4942c19eeab284
   m_configObjects: {}
